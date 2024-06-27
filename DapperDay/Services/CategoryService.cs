@@ -20,9 +20,13 @@ namespace DapperDay.Services
             await connection.ExecuteAsync(query, parameters);
         }
 
-        public Task DeleteCategoryAsync(int id)
+        public async Task DeleteCategoryAsync(int id)
         {
-            throw new NotImplementedException();
+            string query = "Delete From TblCategory Where CategoryId=@categoryId";
+            var parameters = new DynamicParameters();
+            parameters.Add("@categoryId", id);
+            var connection = _context.CreateConnection();
+            await connection.ExecuteAsync(query, parameters);
         }
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
