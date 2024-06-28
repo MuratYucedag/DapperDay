@@ -9,5 +9,6 @@ namespace DapperDay.Services
         Task DeleteProductAsync(int id);
         Task UpdateProductAsync(UpdateProductDto updateProductDto);
         Task<GetByIdProductDto> GetProductAsync(int id);
+        Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
     }
 }

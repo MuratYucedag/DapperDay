@@ -40,6 +40,14 @@ namespace DapperDay.Services
             return values.ToList();
         }
 
+        public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
+        {
+            string query = "Select ProductId,ProductName,Price,Stock,CategoryName From TblProduct Inner Join TblCategory On TblProduct.CategoryId=TblCategory.CategoryId";
+            var connection = _context.CreateConnection();
+            var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+            return values.ToList();
+        }
+
         public async Task<GetByIdProductDto> GetProductAsync(int id)
         {
             string query = "Select * From TblProduct Where ProductId=@productId";
